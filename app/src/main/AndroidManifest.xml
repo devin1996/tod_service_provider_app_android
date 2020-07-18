@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ConductorLoginActivity"></activity>
+        <activity android:name=".DriverHomeActivity"></activity>
+        <activity android:name=".ConductorHomeActivity" />
+        <activity android:name=".ResetPasswordActivity" />
+        <activity android:name=".ConductorLoginActivity" />
         <activity android:name=".DriverLoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
