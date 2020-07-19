@@ -51,18 +51,16 @@ public class ConductorLoginActivity extends AppCompatActivity {
 
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 LoginUser();
             }
         });
 
         ForgetPasswordLink.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-                Intent intent = new Intent(ConductorLoginActivity.this, ResetPasswordActivity.class);
-                intent.putExtra("check", "login");
+            public void onClick(View view) {
+                Intent intent = new Intent(ConductorLoginActivity.this , ResetPasswordActivity.class);
+                intent.putExtra("check" , "login");
                 startActivity(intent);
             }
         });
@@ -73,29 +71,25 @@ public class ConductorLoginActivity extends AppCompatActivity {
         String phone = InputPhoneNumber.getText().toString();
         String password = InputPassword.getText().toString();
 
-        if (TextUtils.isEmpty(phone)){
-            Toast.makeText(this, "Please enter your Phone Number", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (TextUtils.isEmpty(password)){
-            Toast.makeText(this, "Please enter your Password", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        if (TextUtils.isEmpty(phone)) {
+            Toast.makeText(this , "Please enter your Phone Number" , Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this , "Please enter your Password" , Toast.LENGTH_SHORT).show();
+        } else {
             loadingBar.setTitle("Login Account");
             loadingBar.setMessage("Please wait while Checking credentials");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
 
-            AllowAccessToAccount(phone, password);
+            AllowAccessToAccount(phone , password);
         }
     }
 
-    private void AllowAccessToAccount(final String phone, final String password) {
+    private void AllowAccessToAccount(final String phone , final String password) {
 
-        if(chkBoxRememberMe.isChecked())
-        {
-            Paper.book().write(Prevalent.UserPhoneKey, phone);
-            Paper.book().write(Prevalent.UserPasswordKey, password);
+        if (chkBoxRememberMe.isChecked()) {
+            Paper.book().write(Prevalent.UserPhoneKey , phone);
+            Paper.book().write(Prevalent.UserPasswordKey , password);
         }
 
         final DatabaseReference RootRef;
@@ -103,38 +97,31 @@ public class ConductorLoginActivity extends AppCompatActivity {
 
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if (dataSnapshot.child("User").child("Conductor").child(phone).exists())
-                {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("User").child("Conductor").child(phone).exists()) {
                     Users usersData = dataSnapshot.child("User").child("Conductor").child(phone).getValue(Users.class);
 
-                    if (usersData.getPhone().equals(phone)){
+                    if (usersData.getPhone().equals(phone)) {
 
-                        if (usersData.getPassword().equals(password)){
+                        if (usersData.getPassword().equals(password)) {
 
 
-                            Toast.makeText(ConductorLoginActivity.this, "You have Logged in Successfully...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ConductorLoginActivity.this , "You have Logged in Successfully..." , Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
-                            Intent intent = new Intent(ConductorLoginActivity.this, ConductorHomeActivity.class);
+                            Intent intent = new Intent(ConductorLoginActivity.this , ConductorMainActivity.class);
                             Prevalent.currentOnlineUser = usersData;
                             startActivity(intent);
 
 
-
-                        }
-
-                        else {
+                        } else {
                             loadingBar.dismiss();
-                            Toast.makeText(ConductorLoginActivity.this, "Password is incorrect", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ConductorLoginActivity.this , "Password is incorrect" , Toast.LENGTH_SHORT).show();
                         }
 
                     }
-                }
-                else
-                {
-                    Toast.makeText(ConductorLoginActivity.this, "Account with this " +phone+ "number do not exists", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ConductorLoginActivity.this , "Account with this " + phone + "number do not exists" , Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
 
                 }

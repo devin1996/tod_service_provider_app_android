@@ -4,12 +4,11 @@ public class Users {
 
     private String name, phone, password, image, address;
 
-    public Users()
-    {
+    public Users() {
 
     }
 
-    public Users(String name, String phone, String password, String image, String address) {
+    public Users(String name , String phone , String password , String image , String address) {
         this.name = name;
         this.phone = phone;
         this.password = password;
