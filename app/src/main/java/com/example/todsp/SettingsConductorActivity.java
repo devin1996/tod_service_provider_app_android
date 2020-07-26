@@ -55,7 +55,7 @@ public class SettingsConductorActivity extends AppCompatActivity {
         fullNameEditText = (EditText) findViewById(R.id.con_full_name);
         userPhoneEditText = (EditText) findViewById(R.id.con_settings_phone_number);
         addressEditText = (EditText) findViewById(R.id.con_settings_address);
-        pasEmail = (EditText) findViewById(R.id.dri_email);
+        pasEmail = (EditText) findViewById(R.id.con_email);
 
         profileChangeTextBtn = (TextView) findViewById(R.id.con_image_change_btn);
         closeTextBtn = (TextView) findViewById(R.id.close_con_settings_btn);

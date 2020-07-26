@@ -40,5 +40,14 @@ public class ConductorHomeActivity extends AppCompatActivity {
             }
         });
 
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logOutIntent = new Intent(ConductorHomeActivity.this, SettingsConductorActivity.class);
+                startActivity(logOutIntent);
+                finish();
+            }
+        });
+
     }
 }
