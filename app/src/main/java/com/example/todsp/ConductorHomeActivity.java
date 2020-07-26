@@ -22,6 +22,15 @@ public class ConductorHomeActivity extends AppCompatActivity {
         settings = (Button) findViewById(R.id.btn_con_settings1212);
         logOut = (Button) findViewById(R.id.btn_con_logout1212);
 
+        attendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logOutIntent = new Intent(ConductorHomeActivity.this, ScanConductorActivity.class);
+                startActivity(logOutIntent);
+                finish();
+            }
+        });
+
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
