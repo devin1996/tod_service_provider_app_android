@@ -109,9 +109,10 @@ public class DriverLoginActivity extends AppCompatActivity {
                             Toast.makeText(DriverLoginActivity.this , "You have Logged in Successfully..." , Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
-                            Intent intent = new Intent(DriverLoginActivity.this , NavigationBottomActivity.class);
+                            Intent intent = new Intent(DriverLoginActivity.this , DriverHomeActivity.class);
                             Prevalent.currentOnlineUser = usersData;
                             startActivity(intent);
+                            finish();
 
 
                         } else {

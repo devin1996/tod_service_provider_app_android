@@ -7,20 +7,69 @@
     tools:context=".NavigationBottomActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/title_01"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Driver Menu"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true">
+        android:textSize="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Welcome Driver"
+        android:gravity="center"
+        ></TextView>
 
-    </TextView>
+    <ImageView
+        android:id="@+id/driver_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/driver01"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/title_01"
+
+        ></ImageView>
+
+    <Button
+        android:id="@+id/btn_dri_attendance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/buttonblack"
+        android:padding="17dp"
+        android:text="Attendence"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/driver_image"
+        />
+
+    <Button
+        android:id="@+id/btn_dri_pickup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_below="@+id/btn_dri_attendance"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/buttonblack"
+        android:padding="17dp"
+        android:text="Pick up Requests"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/bottom_navigation"
-            app:itemBackground="@color/cardview_dark_background"
+            app:itemBackground="@color/colorbtn"
             app:itemTextColor="@drawable/selector"
             app:itemIconTint="@drawable/selector"
             app:menu="@menu/menu_navigations"

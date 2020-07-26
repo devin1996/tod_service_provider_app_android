@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NavBottomActivity3"></activity>
+        <activity android:name=".ScanConductorActivity"></activity>
+        <activity android:name=".ScanDriverActivity" />
+        <activity android:name=".NavBottomActivity3" />
         <activity android:name=".NavBottomActivity2" />
         <activity android:name=".NavigationBottomActivity" />
         <activity android:name=".BottomActivity" />

@@ -109,9 +109,10 @@ public class ConductorLoginActivity extends AppCompatActivity {
                             Toast.makeText(ConductorLoginActivity.this , "You have Logged in Successfully..." , Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
-                            Intent intent = new Intent(ConductorLoginActivity.this , ConductorMainActivity.class);
+                            Intent intent = new Intent(ConductorLoginActivity.this , ConductorHomeActivity.class);
                             Prevalent.currentOnlineUser = usersData;
                             startActivity(intent);
+                            finish();
 
 
                         } else {

@@ -6,25 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".NavBottomActivity3">
 
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true">
-
-    </TextView>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/title_03"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="Welcome Driver"
+        android:textSize="30dp"></TextView>
+
+    <ImageView
+        android:id="@+id/driver_image_001"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/title_03"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/driver02"
+
+        ></ImageView>
+
+    <Button
+        android:id="@+id/btn_dri_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/driver_image_001"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/buttonblack"
+        android:padding="17dp"
+        android:text="Settings"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_dri_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_dri_settings"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/buttonblack"
+        android:padding="17dp"
+        android:text="Log Out"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        app:itemBackground="@color/cardview_dark_background"
-        app:itemTextColor="@drawable/selector"
-        app:itemIconTint="@drawable/selector"
-        app:menu="@menu/menu_navigations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        />
+        app:itemBackground="@color/cardview_dark_background"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu_navigations" />
 
 </RelativeLayout>

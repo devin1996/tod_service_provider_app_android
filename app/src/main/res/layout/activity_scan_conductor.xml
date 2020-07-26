@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScanConductorActivity">
+
+    <Button
+        android:id="@+id/scan__con_qr"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/buttonblack"
+        android:padding="17dp"
+        android:text="Scan QR Code"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/con_qr_read"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/scan__con_qr"
+        android:gravity="center"
+        android:hint="Please Scan the QR code in front of you"/>
+
+    <Button
+        android:id="@+id/con_day_start"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:background="@drawable/buttonblack"
+        android:padding="17dp"
+        android:layout_margin="20dp"
+        android:text="Start Your Day"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/con_qr_read"/>
+
+    <Button
+        android:id="@+id/con_day_stop"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/buttonblack"
+        android:padding="17dp"
+        android:text="End Your Day"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/con_day_start"/>
+
+</RelativeLayout>
