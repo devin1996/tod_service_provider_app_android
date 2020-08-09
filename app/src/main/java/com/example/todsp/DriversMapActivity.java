@@ -9,6 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.todsp.Prevalent.Prevalent;
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -18,6 +21,9 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class DriversMapActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
@@ -82,6 +88,16 @@ public class DriversMapActivity extends FragmentActivity implements OnMapReadyCa
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
+
+        String driverId = Prevalent.currentOnlineUser.getPhone();
+
+        DatabaseReference DriverAvailabilityref = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
+
+        GeoFire geoFireAvailable = new GeoFire(DriverAvailabilityref);
+        geoFireAvailable.setLocation(driverId, new GeoLocation(location.getLatitude(), location.getLongitude()));
+
+//        DatabaseReference DriverWorkingref = FirebaseDatabase.getInstance().getReference().child("drivers_working");
+//        GeoFire geoFireWorking = new GeoFire(DriverWorkingref);
     }
 
     private void buildGoogleApiClient() {
@@ -93,4 +109,16 @@ public class DriversMapActivity extends FragmentActivity implements OnMapReadyCa
         mGoogleApiClient.connect();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        String driverId = Prevalent.currentOnlineUser.getPhone();
+
+        DatabaseReference DriverAvailabilityref = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
+
+        GeoFire geoFireAvailable = new GeoFire(DriverAvailabilityref);
+        geoFireAvailable.removeLocation(driverId);
+
+    }
 }
