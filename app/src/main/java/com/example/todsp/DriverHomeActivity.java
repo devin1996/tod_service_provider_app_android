@@ -48,5 +48,14 @@ public class DriverHomeActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        pickUpRequests.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logOutIntent = new Intent(DriverHomeActivity.this, DriversMapActivity.class);
+                startActivity(logOutIntent);
+                finish();
+            }
+        });
     }
 }
