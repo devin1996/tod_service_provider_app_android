@@ -1,8 +1,11 @@
 package com.example.todsp;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +24,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -34,21 +36,42 @@ public class DriversMapActivity extends FragmentActivity implements OnMapReadyCa
     Location mLastLocation;
     LocationRequest mLocationRequest;
 
+    Button LogoutDriBtn, settingsDriBtn;
+
+    private String currentUser;
+    private Boolean currentLogoutDriverStatus = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drivers_map);
+
+        currentUser = Prevalent.currentOnlineUser.getPhone();
+
+
+        LogoutDriBtn = (Button) findViewById(R.id.m_call);
+        settingsDriBtn = (Button) findViewById(R.id.m_call2);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-    }
 
+        LogoutDriBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentLogoutDriverStatus = true;
+                dissconnectTheDriver();
+                exitTaskDriver();
+            }
+        });
+
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this , android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this , android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         buildGoogleApiClient();
@@ -94,7 +117,7 @@ public class DriversMapActivity extends FragmentActivity implements OnMapReadyCa
         DatabaseReference DriverAvailabilityref = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
 
         GeoFire geoFireAvailable = new GeoFire(DriverAvailabilityref);
-        geoFireAvailable.setLocation(driverId, new GeoLocation(location.getLatitude(), location.getLongitude()));
+        geoFireAvailable.setLocation(driverId , new GeoLocation(location.getLatitude() , location.getLongitude()));
 
 //        DatabaseReference DriverWorkingref = FirebaseDatabase.getInstance().getReference().child("drivers_working");
 //        GeoFire geoFireWorking = new GeoFire(DriverWorkingref);
@@ -113,12 +136,32 @@ public class DriversMapActivity extends FragmentActivity implements OnMapReadyCa
     protected void onStop() {
         super.onStop();
 
-        String driverId = Prevalent.currentOnlineUser.getPhone();
-
-        DatabaseReference DriverAvailabilityref = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
-
-        GeoFire geoFireAvailable = new GeoFire(DriverAvailabilityref);
-        geoFireAvailable.removeLocation(driverId);
+//        String driverId = Prevalent.currentOnlineUser.getPhone();
+//
+//        DatabaseReference DriverAvailabilityref = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
+//
+//        GeoFire geoFireAvailable = new GeoFire(DriverAvailabilityref);
+//        geoFireAvailable.removeLocation(driverId);
+        if (!currentLogoutDriverStatus) {
+            dissconnectTheDriver();
+        }
 
     }
+
+    private void dissconnectTheDriver() {
+
+        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+        String driverId = Prevalent.currentOnlineUser.getPhone();
+        DatabaseReference DriverAvailabilityref = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
+        GeoFire geoFireAvailable = new GeoFire(DriverAvailabilityref);
+        geoFireAvailable.removeLocation(driverId);
+    }
+
+    private void exitTaskDriver() {
+        Intent logOutIntent = new Intent(DriversMapActivity.this , DriverHomeActivity.class);
+        logOutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(logOutIntent);
+        finish();
+    }
+
 }
