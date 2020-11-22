@@ -81,7 +81,6 @@ public class DriverMapsActivity extends FragmentActivity implements OnMapReadyCa
         //notice
         setContentView(R.layout.activity_driver_maps);
 
-
         //mAuth = FirebaseAuth.getInstance();
         //currentUser = mAuth.getCurrentUser();
         //driverID = mAuth.getCurrentUser().getUid();

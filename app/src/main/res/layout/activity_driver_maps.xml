@@ -8,12 +8,6 @@
     tools:context="com.example.todsp.DriverMapsActivity">
 
 
-    <!--<include-->
-    <!--layout="@layout/app_bar_layout"-->
-    <!--android:id="@+id/main_page_toolbar">-->
-    <!--</include>-->
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,8 +32,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimaryDark"
-        android:text="Settings"
+        android:background="@color/logocolor"
+        android:text="Back to Home"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@android:color/background_light"
@@ -54,8 +48,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/settings_driver_btn"
-        android:background="@color/colorPrimaryDark"
-        android:text="Logout"
+        android:background="@color/logocolor"
+        android:text="Disconnect"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@android:color/background_light"
@@ -69,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="10dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/logocolor"
         android:visibility="visible">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -80,7 +74,7 @@
             android:layout_marginStart="10dp"
             android:padding="2dp"
             android:src="@drawable/profile"
-            app:civ_border_color="#c880ff"
+            app:civ_border_color="@color/logocolor3"
             app:civ_border_width="2dp" />
 
         <TextView
@@ -103,7 +97,7 @@
             android:layout_marginStart="2dp"
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@+id/profile_image_customer"
-            android:text="Customerv Phone Number"
+            android:text="Customer Phone Number"
             android:textColor="@android:color/white"
             android:textSize="14dp"
             android:textStyle="bold" />
