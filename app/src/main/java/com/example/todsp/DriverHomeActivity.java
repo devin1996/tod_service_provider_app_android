@@ -31,6 +31,15 @@ public class DriverHomeActivity extends AppCompatActivity {
             }
         });
 
+        perfomanceAssestment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logOutIntent = new Intent(DriverHomeActivity.this, DriverPerfomanceActivity.class);
+                startActivity(logOutIntent);
+                finish();
+            }
+        });
+
         attendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

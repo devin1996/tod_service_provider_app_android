@@ -2,10 +2,29 @@
 <resources>
     <color name="colorPrimary">#575A61</color>
     <color name="colorPrimaryDark">#59585C</color>
-    <color name="colorAccent">#989A9C</color>
-    <color name="colorbtn">#434E4D</color>
+    <color name="colorAccent">#AEAFAF</color>
+    <color name="colorbtn">#3B3B3B</color>
+    <color name="logocolor">#3B3B3B</color>
 
     <color name="QRCodeWhiteColor">#ffffff</color>
-
     <color name="QRCodeBlackColor">#000000</color>
+
+    <color name="color1">#5A1F1B</color>
+    <color name="color2">#5784A8</color>
+    <color name="color3">#796e25</color>
+    <color name="color4">#59717c</color>
+
+    <color name="color7">#625F7A</color>
+
+    <color name="logocolor2">#D0D0D0</color>
+    <color name="logocolor3">#FE964C</color>
+    <color name="color8">#FA9248</color>
+
+    <color name="whiteyellow">#FFEEDB</color>
+    <color name="greeen">#8CC63E</color>
+    <color name="blueee">#6AC9EE</color>
+    <color name="yelllow">#FCDB02</color>
+
+    <color name="bg_bubble_self">#62caa6</color>
+    <color name="bg_bubble_watbot">#ecf0f1</color>
 </resources>

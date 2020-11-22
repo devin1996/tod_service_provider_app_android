@@ -31,6 +31,17 @@ public class ConductorHomeActivity extends AppCompatActivity {
             }
         });
 
+        perfomanceAssestment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logOutIntent = new Intent(ConductorHomeActivity.this, ConductorPerfomanceActivity.class);
+                startActivity(logOutIntent);
+                finish();
+            }
+        });
+
+
+
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
