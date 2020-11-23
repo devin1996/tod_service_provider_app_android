@@ -38,7 +38,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/buttonblack"
         android:padding="17dp"
-        android:text="Attendence"
+        android:text="On Service"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="18sp"

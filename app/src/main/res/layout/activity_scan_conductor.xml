@@ -53,4 +53,30 @@
         android:textSize="18sp"
         android:layout_below="@+id/con_day_start"/>
 
+    <Button
+        android:id="@+id/curent_bookings"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/buttonblack"
+        android:padding="17dp"
+        android:text="Current Bookings"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/con_day_stop"/>
+
+    <Button
+        android:id="@+id/curent_support"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/buttonblack"
+        android:padding="17dp"
+        android:text="Support Passengers"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/curent_bookings"/>
+
 </RelativeLayout>

@@ -34,6 +34,7 @@ public class ScanConductorActivity extends AppCompatActivity {
     Button scanQrBtn;
     Button startDayBtn;
     Button stopDayBtn;
+    Button curent_bookings, curent_support;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class ScanConductorActivity extends AppCompatActivity {
         scanQrBtn = (Button) findViewById(R.id.scan__con_qr);
         startDayBtn = (Button) findViewById(R.id.con_day_start);
         stopDayBtn = (Button) findViewById(R.id.con_day_stop);
+        curent_bookings = (Button) findViewById(R.id.curent_bookings);
+        curent_support = (Button) findViewById(R.id.curent_support);
 
         scanQrBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +70,7 @@ public class ScanConductorActivity extends AppCompatActivity {
                     Toast.makeText(ScanConductorActivity.this , "Please scan the qr code first" , Toast.LENGTH_SHORT).show();
                 } else {
                     startDay();
-                    Intent intent = new Intent(ScanConductorActivity.this , DriverHomeActivity.class);
+                    Intent intent = new Intent(ScanConductorActivity.this , ConductorHomeActivity.class);
                     intent.putExtra(EXTRA_TEXT , busDetail);
                     startActivity(intent);
                 }
@@ -84,6 +87,34 @@ public class ScanConductorActivity extends AppCompatActivity {
                 } else {
                     endDay();
                     Intent intent = new Intent(ScanConductorActivity.this , ConductorHomeActivity.class);
+                    intent.putExtra(EXTRA_TEXT , busDetail);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        curent_bookings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String busDetail = tv_qr_readTxt.getText().toString();
+                if (TextUtils.isEmpty(busDetail)) {
+                    Toast.makeText(ScanConductorActivity.this , "Please scan the qr code first" , Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(ScanConductorActivity.this , CurrentBookingActivity.class);
+                    intent.putExtra(EXTRA_TEXT , busDetail);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        curent_support.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String busDetail = tv_qr_readTxt.getText().toString();
+                if (TextUtils.isEmpty(busDetail)) {
+                    Toast.makeText(ScanConductorActivity.this , "Please scan the qr code first" , Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(ScanConductorActivity.this , SupportActivity.class);
                     intent.putExtra(EXTRA_TEXT , busDetail);
                     startActivity(intent);
                 }
